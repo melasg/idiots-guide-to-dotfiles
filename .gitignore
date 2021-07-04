@@ -1,0 +1,14 @@
+# Things git should ignore globally
+# belongs at ~/.gitignore
+# then run `git config --global core.excludesfile ~/.gitignore`
+
+# Mac finder positional file
+.DS_Store
+
+# vim temp files
+*~
+*.swp
+*.swo
+
+# sensitive files 
+etc/.local/share/misc/
