@@ -1,0 +1,1 @@
+Here lies VSC configuration `.json` files and plugin installation scripts.

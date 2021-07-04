@@ -1,0 +1,94 @@
+# Compiled source
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+
+# IDE specific
+*.so
+dwsync.xml
+*.tmp
+*.wpr
+*.project
+*.cproject
+*.tmproj
+*.tmproject
+*.vi
+*.komodoproject
+.komodotools
+nbproject
+*.manifest
+*.spec
+*.mo
+
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+target/
+.python-version
+
+# OS generated files
+._*
+.AppleDouble
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+.LSOverride
+.cache
+.Spotlight-V100
+.Trashes
+.DS_Store
+desktop.ini
+ehthumbs.db
+Thumbs.db
+
+# Other dev-related files
+*.bak
+*.orig
+*.sass-cache
+.directory
+*~
+.svn/*
+*.swp
+svn-commit.*
+tags
+TAGS
+# thumbnails
+._*
+*.orig
+.DS_Store
+.classpath
+.idea
+.project
+.tern-project
+__pycache__
+dive.log
+node_modules
+npm-debug.log
+tags
+venv
+pip-log.txt
+pip-delete-this-directory.txt
+# direnv
+.envrc
+# dotenv
+.env

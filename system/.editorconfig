@@ -1,0 +1,44 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+
+[{*.rb,Rakefile}]
+indent_style = space
+indent_size = 2
+
+[*.vim]
+indent_style = space
+indent_size = 4
+
+[*.snippets]
+indent_style = tab
+indent_size = 4
+[*]
+end_of_line = lf
+indent_size = 2
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.rs]
+indent_size = 4
+
+[*.py]
+indent_size = 4
+
+[*.go]
+indent_style = tab
+
+[*.sh]
+indent_size = 2
+
+# shfmt
+binary_next_line = true
+switch_case_indent = true
+keep_padding = true
+
+[Makefile]
+indent_style = tab

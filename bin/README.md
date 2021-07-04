@@ -1,0 +1,1 @@
+anything in `bin/` will get added to `$PATH` and be made available everywhere

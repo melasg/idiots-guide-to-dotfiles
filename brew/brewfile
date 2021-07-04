@@ -1,0 +1,269 @@
+# change dir
+cask_args appdir: "/Applications"
+# Taps
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'homebrew/services'
+tap 'nicoverbruggen/homebrew-cask'
+tap 'getantibody/tap'
+tap 'heroku/brew'
+tap 'kieran-bamforth/homebrew-repo'
+tap 'universal-ctags/universal-ctags'
+tap 'wagoodman/dive'
+
+# Binaries & CLI stuff
+brew 'autoconf'
+brew 'automake'
+brew 'autoenv'
+brew 'bash' # Latest Bash version
+brew 'bash-completion'
+brew 'ccat'
+brew 'cmake'
+brew 'coreutils' # Those that come with macOS are outdated
+brew 'findutils'
+brew 'diff-so-fancy'
+brew 'direnv'
+brew 'ffmpeg'
+brew 'gh'
+brew 'gnupg'
+brew 'gnu-sed'
+brew 'grep'
+brew 'libfido2'
+brew 'git'
+brew 'git-lfs'
+brew 'git-recent'
+brew 'gnutls'
+brew 'gnupg'
+brew 'grep'
+brew 'httpie'
+brew 'hub'
+brew 'mackup'
+brew 'mas' # Mac App Store manager
+brew 'media-info'
+brew 'mp4v2'
+brew 'ossp-uuid'
+brew 'pipx'
+brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
+brew 'stripe/stripe-cli/stripe'
+brew 'svn'
+brew 'trash' # Manage the Trash bin
+brew 'tree' # List directories in a tree structure
+brew 'zlib' # Needed for Memcached
+brew 'tmux'
+brew 'libffi'
+brew 'libyaml'
+brew 'zsh'
+brew 'zsh-completion'
+brew 'zsh-syntax-highlighting'
+brew 'neovim'
+brew 'pass'
+brew 'vim'
+brew 'nmap'
+brew 'jpeg'
+brew 'libtiff'
+brew 'libyaml'
+brew 'curl'
+brew 'freetype'
+brew 'faac'
+brew 'colordiff'
+
+# Spatie Medialibrary
+brew 'jpegoptim'
+brew 'optipng'
+brew 'pngquant'
+brew 'svgo'
+brew 'gifsicle'
+
+# Development
+brew 'php'
+brew 'php@7.4'
+brew 'php@7.3'
+brew 'cocoapods'
+brew 'composer'
+brew 'docker-credential-helper-ecr'
+brew 'heroku'
+brew 'imagemagick'
+brew 'libmemcached'
+brew 'meilisearch'
+brew 'memcached'
+brew 'mysql'
+brew 'nginx'
+brew 'node'
+brew 'openssh'
+brew 'openssl'
+brew 'postgresql'
+brew 'pandoc'
+brew 'pandoc-citeproc'
+brew 'prettier'
+brew 'python'
+brew 'redis'
+brew 'rpm'
+brew 'ruby'
+brew 'ruby-build'
+brew 'rbenv'
+brew 'rust'
+brew 'sshfs'
+brew 'sshrc'
+brew 'stunnel'
+brew 'tmux'
+brew 'trash'
+brew 'tree'
+brew 'yarn'
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+brew 'nvm'
+brew 'unrar'
+brew 'vim', args: ['enable-gui']
+brew 'webp'
+brew 'wget'
+brew 'go'
+
+
+
+# GUI / CASK APPS
+# Apps
+cask '1password'
+cask '1password-cli'
+cask 'aerial'
+cask 'caffeine'
+cask 'dbngin'
+cask 'discord'
+cask 'docker'
+cask 'figma'
+cask 'firefox'
+cask 'github'
+cask 'google-backup-and-sync'
+cask 'google-chrome'
+cask 'gpg-suite'
+cask 'imageoptim'
+cask 'insomnia'
+cask 'pastebot'
+cask 'phpmon'
+cask 'phpstorm'
+cask 'protonvpn'
+cask 'ray'
+cask 'screenflow'
+cask 'signal'
+cask 'slack'
+cask 'sublime-text'
+cask 'tableplus'
+cask 'telegram-desktop'
+cask 'the-unarchiver'
+cask 'tinkerwell'
+cask 'transmission'
+cask 'transmit'
+cask 'tunnelbear'
+cask 'tuple'
+cask 'visual-studio-code'
+cask 'vlc'
+cask 'zoom'
+cask 'basictex'
+cask 'daisydisk'
+cask 'docker'
+cask 'dropbox'
+cask 'firefox'
+cask 'flux'
+cask 'gas-mask'
+cask 'java'
+cask 'osxfuse'
+cask 'qlmarkdown'
+cask 'quicklook-csv'
+cask 'quicklook-json'
+cask 'session-manager-plugin'
+cask 'suspicious-package'
+cask "vlc"
+cask 'virtualbox'
+cask 'visual-studio-code'
+cask 'zoomus'
+cask 'zotero'
+cask "vscodium"
+
+# Quicklook
+cask 'qlmarkdown'
+cask 'quicklook-json'
+
+# Fonts
+cask 'font-lato'
+cask 'font-open-sans'
+cask 'font-roboto'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'
+cask 'font-fira-code'
+cask 'font-hack-nerd-font'
+cask 'font-jetbrains-mono'
+cask 'font-cascadia-mono'
+cask 'font-3270-nerd-font'
+
+# Mac App Store
+mas 'Byword', id: 420212497
+mas 'Giphy Capture', id: 668208984
+mas 'Keynote', id: 409183694
+mas 'Numbers', id: 409203825
+mas 'Spark', id: 1176895641
+mas 'Speedtest', id: 1153157709
+mas 'Things', id: 904280696
+mas 'Tweetbot', id: 1384080005
+mas 'Slack', id: 803453959
+mas 'Sip', id: 507257563 
+mas 'Simplenote', id: 692867256 
+mas 'Todoist', id: 585829637
+mas 'Apple Configurator 2', id: 1037126344
+mas 'Boom 3D', id: 1233048948
+mas 'Kaleidoscope', id: 587512244
+mas 'Medis', id: 1063631769
+mas 'MindNode', id: 1289197285
+mas 'OmniFocus', id: 1346203938
+mas 'Reeder', id: 1449412482
+mas 'Transmit', id: 1436522307
+mas 'Trello' , id: 1278508951
+mas 'Tweetbot', id: 557168941
+mas 'WhatsApp Desktop', id: 1147396723
+mas "Affinity Photo", id: 824183456
+mas "Affinity Designer", id: 824171161
+mas "FruitJuice", id: 671736912
+mas "Drafts", id: 1435957248
+mas "Airmail", id: 918858936
+mas "Logic Pro X", id: 634148309
+mas "Fantastical", id: 975937182
+mas "Xcode", id: 497799835
+mas "Reeder", id: 1449412482
+mas "Final Cut Pro", id: 424389933
+mas "Deliveries", id: 924726344
+mas "Shush", id: 496437906
+mas "Pixelmator Pro", id: 1289583905
+mas "Magnet", id: 441258766
+mas "Octotree Pro", id: 1457450145
+mas "Coca", id: 1000808993
+mas "MindNode", id: 1289197285
+mas "ColorSlurp", id: 1287239339
+mas "Bear", id: 1091189122
+mas "1Blocker", id: 1107421413
+mas "bear", id: 1091189122
+mas "cascadea", id: 1432182561
+mas "daisydisk", id: 411643860
+mas "duckduckgo privacy essentials", id: 1482920575
+mas "keynote", id: 409183694
+mas "numbers", id: 409203825
+mas "pages", id: 409201541
+mas "pdf expert", id: 1055273043
+mas "1Blocker", id: 1107421413
+mas "1Password", id: 443987910
+mas "Airmail 3", id: 918858936
+mas "Better", id: 1121192229
+mas "Caffeine", id: 411246225
+mas "DaisyDisk", id: 411643860
+mas "Fantastical 2", id: 975937182
+mas "iStat Mini", id: 927292435
+mas "Marked", id: 448925439
+mas "Soulver", id: 413965349
+mas "Spillo", id: 873245660
+mas "Stay", id: 435410196
+mas "The Hit List", id: 432764806
+mas "The Unarchiver", id: 425424353
+mas "Tweetbot", id: 557168941
+mas "Xcode", id: 497799835
