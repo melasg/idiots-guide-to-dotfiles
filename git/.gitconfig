@@ -1,51 +1,52 @@
 [include]
-        path = ~/.gitconfig.local
+        # path = ~/.gitconfig.local
+        path = ~/git/.gitconfig
 [hub]
         protocol = https
+[github]
+		user   = melasq
 
 [user]
-	name = melasq
-	email = melodymelika@protonmail.ch
+		name = Melody
+		email = melodymelika@protonmail.ch
 
 [mergetool]
-	keepBackup = false
+		keepBackup = false
 
 [alias]
-	# parent = rev-parse --abbrev-ref --symbolic-full-name @{u}
-	# last = log -1 HEAD
-	# unstage = reset HEAD --
-	# pr = !sh ~/dotfiles/git/pull_request.sh
-	# remotes = remote -v
-	# syncu = !sh ~/dotfiles/git/sync_with_upstream.sh
-	# diffall = !sh ~/dotfiles/git/git_unpushed.sh
-	# plog = !sh ~/dotfiles/git/plog.sh
-	# lazy = !lazygit
-	# contributors = shortlog --summary --numbered
+		# parent = rev-parse --abbrev-ref --symbolic-full-name @{u}
+		# last = log -1 HEAD
+		# unstage = reset HEAD --
+		# lazy = !lazygit
+		# contributors = shortlog --summary --numbered
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = true
+		diff = auto
+		status = auto
+		branch = auto
+		ui = true
 
 [commit]
-	gpgsign = false
+		gpgsign = false
 
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
+		editor = vim
+		excludesfile = ~/.gitignore
 	
 [credential]
-	helper = osxkeychain
+		helper = osxkeychain
 
 [apply]
-        whitespace = nowarn
+        	whitespace = nowarn
+
 [mergetool]
-        keepBackup = false
+        	keepBackup = false
+			
 [difftool]
-        prompt = false
+        	prompt = false
+
 [help]
-        autocorrect = 1
+        	autocorrect = 1
 [push]
         # See `git help config` (search for push.default)
         # for more information on different options of the below setting.

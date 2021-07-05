@@ -312,4 +312,3 @@ export PATH="/usr/local/lib/python3.7/site-packages:$PATH"
 export PATH="$HOME/workspace/flutter/bin:$PATH"
 
 PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/python@3.8/3.8.2/bin/python3.8
-

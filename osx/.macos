@@ -3,7 +3,8 @@
 # 'Forked' from https://mths.be/macos and a few other devs
 # But as always, drduh's the true OG
 # ~/.macos — 
-intro {
+
+# INTRO
     # Close any open System Preferences panes, to prevent them from overriding
     # settings we’re about to change
     osascript -e 'tell application "System Preferences" to quit'
@@ -12,9 +13,14 @@ intro {
     sudo -v
     # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-}
+# COMPUTER NAME and such 
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "**your-computer-name**"
+sudo scutil --set HostName "**your-hostname**"
+sudo scutil --set LocalHostName "**your-hostname**"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "**your-computer-name**"
 
-dock {
+# DOCK
     # Enable highlight hover effect for the grid view of a stack (Dock)
     defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
@@ -59,6 +65,10 @@ dock {
 
     # Don’t automatically rearrange Spaces based on most recent use
     defaults write com.apple.dock mru-spaces -bool false
+
+    # Enable Dashboard dev mode (allows keeping widgets on the desktop)
+    defaults write com.apple.dashboard devmode -bool true
+
 
     # Remove the auto-hiding Dock delay
     defaults write com.apple.dock autohide-delay -float 0
@@ -147,9 +157,8 @@ dock {
     # Remove All Apps From The Dock In OS X
     defaults write com.apple.dock persistent-apps -array
     killall Dock
-}
 
-screen {
+# SCREEN
         # Require password immediately after sleep or screen saver begins
     defaults write com.apple.screensaver askForPassword -int 1
     defaults write com.apple.screensaver askForPasswordDelay -int 0
@@ -247,14 +256,48 @@ screen {
     defaults write com.apple.dock wvous-bl-modifier -int 1048576
 
 
-}
+# SAFARI & WEBKIT
+    # Set Safari’s home page to `about:blank` for faster loading
+    defaults write com.apple.Safari HomePage -string "about:blank"
 
-terminal {
-# Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
+    # Prevent Safari from opening ‘safe’ files automatically after downloading
+    defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
-# Use a modified version of the Solarized Dark theme by default in Terminal.app
-osascript <<EOD
+    # Allow hitting the Backspace key to go to the previous page in history
+    defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+
+    # Hide Safari’s bookmarks bar by default
+    defaults write com.apple.Safari ShowFavoritesBar -bool false
+
+    # Hide Safari’s sidebar in Top Sites
+    defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+
+    # Disable Safari’s thumbnail cache for History and Top Sites
+    defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+    # Enable Safari’s debug menu
+    defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+    # Make Safari’s search banners default to Contains instead of Starts With
+    defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+    # Remove useless icons from Safari’s bookmarks bar
+    defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+    # Enable the Develop menu and the Web Inspector in Safari
+    defaults write com.apple.Safari IncludeDevelopMenu -bool true
+    defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+    defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+    # Add a context menu item for showing the Web Inspector in web views
+    defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# TERMINAL
+    # Only use UTF-8 in Terminal.app
+    defaults write com.apple.terminal StringEncodings -array 4
+
+    # Use a modified version of the Solarized Dark theme by default in Terminal.app
+    osascript <<EOD
 tell application "Terminal"
 	local allOpenedWindows
 	local initialOpenedWindows
@@ -286,27 +329,25 @@ tell application "Terminal"
 	end repeat
 end tell
 EOD
+    # Enable “focus follows mouse” for Terminal.app and all X11 apps
+    # i.e. hover over a window and start typing in it without clicking first
+    #defaults write com.apple.terminal FocusFollowsMouse -bool true
+    #defaults write org.x.X11 wm_ffm -bool true
 
-# Enable “focus follows mouse” for Terminal.app and all X11 apps
-# i.e. hover over a window and start typing in it without clicking first
-#defaults write com.apple.terminal FocusFollowsMouse -bool true
-#defaults write org.x.X11 wm_ffm -bool true
+    # Enable Secure Keyboard Entry in Terminal.app
+    # See: https://security.stackexchange.com/a/47786/8918
+    defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
-# Enable Secure Keyboard Entry in Terminal.app
-# See: https://security.stackexchange.com/a/47786/8918
-defaults write com.apple.terminal SecureKeyboardEntry -bool true
+    # Disable the annoying line marks
+    defaults write com.apple.Terminal ShowLineMarks -int 0
 
-# Disable the annoying line marks
-defaults write com.apple.Terminal ShowLineMarks -int 0
+    # Install the Solarized Dark theme for iTerm
+    open "${HOME}/init/Solarized Dark.itermcolors"
 
-# Install the Solarized Dark theme for iTerm
-open "${HOME}/init/Solarized Dark.itermcolors"
+    # Don’t display the annoying prompt when quitting iTerm
+    defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-}
-
-system {
+# SYSTEM
     # Set computer name (as done via System Preferences → Sharing)
     #sudo scutil --set ComputerName "0x6D746873"
     #sudo scutil --set HostName "0x6D746873"
@@ -433,9 +474,7 @@ system {
     # Prevent Photos from opening automatically when devices are plugged in
     defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-    }
-
-    install {
+# INSTALL STUFF like homebrew
         # Exit immediately if a command exits with a non-zero status.
     set -e
 
@@ -487,10 +526,21 @@ system {
     # Prevent Photos from opening automatically when devices are plugged in
     defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
-}
+## Finder
+    # Show Library folder
+    chflags nohidden ~/Library
 
-finder {
- ## Finder
+    # Show hidden files
+    defaults write com.apple.finder AppleShowAllFiles YES
+
+    # Show path bar
+    defaults write com.apple.finder ShowPathbar -bool true
+
+    # Show status bar
+    defaults write com.apple.finder ShowStatusBar -bool true
+
+    # Prevent left and right swipe through history in Chrome
+    defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
     # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
     defaults write com.apple.finder QuitMenuItem -bool true
@@ -611,10 +661,8 @@ finder {
         General -bool true \
         OpenWith -bool true \
         Privileges -bool true
-}
 
-keyboard {
-
+# KEYBOARD
         ## Track pad & Keyboard
     # Trackpad: enable tap to click for this user and for the login screen
     defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -674,9 +722,7 @@ keyboard {
     # Stop iTunes from responding to the keyboard media keys
     #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
-}
-
-energy {
+# ENERGY
         # Enable lid wakeup
     sudo pmset -a lidwake 1
 
@@ -713,9 +759,8 @@ energy {
     sudo touch /private/var/vm/sleepimage
     # …and make sure it can’t be rewritten
     sudo chflags uchg /private/var/vm/sleepimage
-}
 
-spotlight {
+# SPOTLIGHT
     # Hide Spotlight tray-icon (and subsequent helper)
     #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
     # Disable Spotlight indexing for any volume that gets mounted and has not yet
@@ -759,58 +804,49 @@ spotlight {
     sudo mdutil -i on / > /dev/null
     # Rebuild the index from scratch
     sudo mdutil -E / > /dev/null
-}
 
-// KILL ALL 
+# KILL everything
+    for app in "Activity Monitor" \
+        "Address Book" \
+        "Calendar" \
+        "cfprefsd" \
+        "Contacts" \
+        "Dock" \
+        "Finder" \
+        "Mail" \
+        "Messages" \
+        "Photos" \
+        "Safari" \
+        "SystemUIServer" \
+        "Terminal" \
+        "Transmission" \
+        "iCal"; do
+        killall "${app}" &> /dev/null
+    done
+    echo "Done. Note that some of these changes require a logout/restart to take effect."
+    defaults write com.apple.dock checked-for-launchpad -bool false
+    defaults write com.apple.dock magnification -bool false
+    defaults write com.apple.dock orientation -string "right"
+    defaults write com.apple.dock persistent-apps -array "()"
+    defaults write com.apple.dock show-recents -bool false
+    defaults write com.apple.dock tilesize -int 48
 
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Opera" \
-	"Photos" \
-	"Safari" \
-	"SizeUp" \
-	"Spectacle" \
-	"SystemUIServer" \
-	"Terminal" \
-	"Transmission" \
-	"Tweetbot" \
-	"Twitter" \
-	"iCal"; do
-	killall "${app}" &> /dev/null
-done
-echo "Done. Note that some of these changes require a logout/restart to take effect."
-defaults write com.apple.dock checked-for-launchpad -bool false
-defaults write com.apple.dock magnification -bool false
-defaults write com.apple.dock orientation -string "right"
-defaults write com.apple.dock persistent-apps -array "()"
-defaults write com.apple.dock show-recents -bool false
-defaults write com.apple.dock tilesize -int 48
+    defaults write com.apple.screencapture disable-shadow -bool true
 
-defaults write com.apple.screencapture disable-shadow -bool true
+    # Dont show accent selector.
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+    defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+    # Set function keys as default.
+    defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+    # Expand save / print panels by default
+    defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+    defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+    defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+    # No boucing of the dock
+    defaults write com.apple.dock no-bouncing -bool TRUE
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 
-# Dont show accent selector.
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-# Set function keys as default.
-defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
-# Expand save / print panels by default
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-# No boucing of the dock
-defaults write com.apple.dock no-bouncing -bool TRUE
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+    chflags nohidden ~/Library
 
-chflags nohidden ~/Library
-
-sudo killall Dock Finder SystemUIServer
+    sudo killall Dock Finder SystemUIServer
