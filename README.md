@@ -1,2 +1,2 @@
-# an idiots guide to dotfiles
+# idiots guide to dotfiles
  melody's patented dotfiles™
