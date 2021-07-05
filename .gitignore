@@ -10,5 +10,8 @@
 *.swp
 *.swo
 
+*~
+\#*\#
+
 # sensitive files 
 etc/.local/share/misc/

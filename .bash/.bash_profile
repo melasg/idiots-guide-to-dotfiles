@@ -8,13 +8,15 @@ source ~/.profile
 
   # Remove the header name and echo only the generated short link.
   echo "${RESPONSE//Location: /}"
-}
 
 # bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
+if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+	# Ensure existing Homebrew v1 completions continue to work
+	export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+	source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
 # exercism bash-completion
 # if [ -f ~/.config/exercism/exercism_completion.bash ]; then
 #  . ~/.config/exercism/exercism_completion.bash
@@ -38,6 +40,9 @@ export NODE_ENV=development
 # haskell stack packages
 # export PATH=$PATH:~/.local/bin
 
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH";
+
 # custom scripts
 export PATH=$PATH:~/bin
 
@@ -58,3 +63,6 @@ export PATH=$PATH:$GOPATH/bin
 # # # auto-activation of virtualenvs
 # eval "$(pyenv virtualenv-init -)"
 # source $(pyenv root)/completions/pyenv.bash
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
