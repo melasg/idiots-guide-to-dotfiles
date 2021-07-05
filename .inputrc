@@ -1,17 +1,10 @@
 # Allow up/down autocompletion of commands from bash history.
 # From: coderwall.com/p/oqtj8w
+
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 set show-all-if-ambiguous on
-set completion-ignore-case on
-
-# Uncomment to enable vi-like command line editing mode.
-# set editing-mode vi
-
-set completion-ignore-case on
-set show-all-if-ambiguous on
-TAB: menu-complete
-
+set completion-ignore-case on\
 
 ## SMARTER TAB-COMPLETION (Readline bindings) ##
 
@@ -26,11 +19,6 @@ set show-all-if-ambiguous on
 
 # Immediately add a trailing slash when autocompleting symlinks to directories
 set mark-symlinked-directories on
-
-# Use the text that has already been typed as the prefix for searching through
-# commands (basically more intelligent Up/Down behavior)
-"\e[A": history-search-backward
-"\e[B": history-search-forward
 
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
